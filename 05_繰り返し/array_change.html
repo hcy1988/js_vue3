@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <script src="../vue.js"></script>
+        <title>Title</title>
+    </head>
+    <body>
+        <div id="app"> </div>
+        <!-- vfor既可以遍历对象，也可以遍历数组 -->
+            <template id="my-app">
+                <ul>
+                    <li v-for="(movie, index) in movies">{{index+1}}-{{movie}}</li>
+                </ul>
+                <button v-on:click="changeArr">change array</button>
+                <input type="text" v-model="newMov">
+                <button v-on:click="addArr">add array</button>
+            </template>
+        <script>
+            const app={
+                template:'#my-app',
+                data(){
+                    return {
+                        message:'Hello hcy',
+                        newMov:'',
+                        movies:[
+                            '星际穿越',
+                            '盗梦空间',
+                            '穆赫兰道',
+                            '禁闭岛'
+                        ],
+                        info:{
+                            name:'hcy',
+                            age:20,
+                            height:1.8,
+                            from:'shanghai'
+                        }
+                    }
+                },
+                methods:{
+                    changeArr(){
+                        this.movies.reverse();
+                    },
+                    addArr(){
+                        this.movies.push(this.newMov);
+                    }
+                }
+            }     
+            Vue.createApp(app).mount('#app')       
+        </script>
+    </body>
+</html>
