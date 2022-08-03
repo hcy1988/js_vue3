@@ -10,23 +10,27 @@
     <body>
         <div id="app"> </div>
             <template id="my-app">
-                <h3>{{firstname}} {{lastname}}</h3>
-                <h3>{{score > 60? 'jige': 'bujige'}}</h3>
-                <h3>{{message.split(' ').reverse().join(' ')}}</h3>
+                <h3>{{resultData}}</h3>
+                <h2>{{reverseData}}</h2>
             </template>
         <script>
             const app={
                 template:'#my-app',
                 data(){
                     return {
-                        message:'Hello hcy',
-                        firstname:'huang',
-                        lastname:'chuanyan',
-                        score:80
+                        message:'Hello hcy'
                     }
                 },
                 methods:{
 
+                },
+                computed:{
+                    resultData:function(){
+                        return this.message + ' hxy ' + this.message;
+                    },
+                    reverseData:function(){
+                        return this.message.split(' ').reverse().join(' ');
+                    }
                 }
             }     
             Vue.createApp(app).mount('#app')       
