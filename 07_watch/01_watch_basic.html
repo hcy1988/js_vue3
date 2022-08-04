@@ -10,8 +10,9 @@
     <body>
         <div id="app"> </div>
             <template id="my-app">
-                <h3>{{resultData}}</h3>
-                <h2>{{reverseData}}</h2>
+                <!-- <h3>{{message}}</h3> -->
+                <input type="text" v-model="message">
+                <button @click="queryAnswer">log your message</button>
             </template>
         <script>
             const app={
@@ -22,14 +23,15 @@
                     }
                 },
                 methods:{
-
+                    queryAnswer(){
+                        console.log(`your answer is ${this.message}`);
+                    }
                 },
-                computed:{
-                    resultData:function(){
-                        return this.message + ' hxy ' + this.message;
-                    },
-                    reverseData:function(){//reverseData(){}を使っても良い
-                        return this.message.split(' ').reverse().join(' ');
+                watch:{
+                    //watch对象为data的变量是，前面是新值，第二参数为旧值
+                    message:function(newValue, oldValue){
+                        console.log(`新值为${newValue},old value is ${oldValue}`);
+                        this.queryAnswer();
                     }
                 }
             }     

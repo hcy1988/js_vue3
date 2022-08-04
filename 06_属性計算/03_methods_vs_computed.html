@@ -10,26 +10,32 @@
     <body>
         <div id="app"> </div>
             <template id="my-app">
-                <h3>{{resultData}}</h3>
-                <h2>{{reverseData}}</h2>
+                <h3>{{fullName}}</h3>
+                <h3>{{fullName}}</h3>
+                <h3>{{fullName}}</h3>
+                <h3>{{getFullname()}}</h3>
+                <h3>{{getFullname()}}</h3>
+                <h3>{{getFullname()}}</h3>
             </template>
         <script>
             const app={
                 template:'#my-app',
                 data(){
                     return {
-                        message:'Hello hcy'
+                        firstname:'huang',
+                        lastname:'chuanyan'
+                    }
+                },
+                computed:{
+                    fullName(){
+                        console.log('run computed')
+                        return this.firstname + ' ' + this.lastname;
                     }
                 },
                 methods:{
-
-                },
-                computed:{
-                    resultData:function(){
-                        return this.message + ' hxy ' + this.message;
-                    },
-                    reverseData:function(){//reverseData(){}を使っても良い
-                        return this.message.split(' ').reverse().join(' ');
+                    getFullname(){
+                        console.log('run methods')
+                        return this.firstname + ' ' + this.lastname;
                     }
                 }
             }     
