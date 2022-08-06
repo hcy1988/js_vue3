@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <script src="../vue.js"></script>
+        <title>Title</title>
+    </head>
+    <body>
+        <div id="app"> </div>
+            <template id="my-app">
+                <h3>{{message}}</h3>
+                <component-a></component-a>
+            </template>
+            <template id="component-a">
+                <input type="text" v-model="message2">
+                <h2>{{message2}}</h2>
+            </template>
+        <script>
+            const ComponentA={
+                template:'#component-a',
+                data(){
+                    return {
+                        message2:'halo freya'
+                    }
+                }
+            };
+            const app={
+                template:'#my-app',
+                data(){
+                    return {
+                        message:'Hello hcy'
+                    }
+                },
+                methods:{
+
+                },
+                components:{
+                    ComponentA
+                }
+            };
+            
+            Vue.createApp(app).mount('#app')       
+        </script>
+    </body>
+</html>

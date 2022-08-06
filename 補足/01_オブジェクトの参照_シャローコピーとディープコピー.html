@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //オブジェクト参照
+        let a1 = {name:'hcy', age:20, friend:{name:'ydc', age:90}};
+        let b1 = a1;
+        //shallow copy
+        let a2 = {name:'hcy', age:20, friend:{name:'ydc', age:90}};
+        let b2 = Object.assign({}, a2);
+        //deep copy
+        let a3 = {name:'hcy', age:20, friend:{name:'ydc', age:90}};
+        let b3 = JSON.parse(JSON.stringify(a3));
+    </script>
+</body>
+</html>

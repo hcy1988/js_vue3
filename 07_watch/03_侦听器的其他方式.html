@@ -11,6 +11,9 @@
         <div id="app"> </div>
             <template id="my-app">
                 <button @click="changeInfo">改变info</button>
+                <button @click="changeAge">改变age</button>
+                <!-- <button @click="unwatch">停止侦听</button> -->
+
             </template>
         <script>
             const app={
@@ -32,24 +35,27 @@
                     //画面が更新できますが、watchは実行されない
                     //ここの事例はinfo自体変更されると、watchできます。infoの内部情報を変更してもwatchは動作しない
                     //内部情報もwatchしたい場合、ディープリスンニングすることで良い
-                    changeInfoName(){
-                        this.info.name='hxy'
-                    }
-                },
-                watch:{
-                    // info(newValue, oldValue){
-                    //     console.log(newValue, oldValue);
+                    // changeInfoName(){
+                    //     this.info.name='hxy'
                     // },
+                    changeAge(){
+                        this.info.age=25
+                    },
                     
-                    info:{
-                        handler:function(newValue, oldValue){
-                        console.log(newValue, oldValue);
-                        },
-                        //深度侦听
+                },
+                // watch:{
+                //     "info.age":function(newAge,oldAge){
+                //         console.log(newAge,oldAge)
+                //     }
+                // },
+                created(){
+                    this.$watch('info',function(newName,oldName){
+                        console.log(newName,oldName);
+                    },
+                    {
                         deep:true,
-                        //サイトを開くとすぐに実行
                         immediate:true
-                    }
+                    })
                 }
             }     
             Vue.createApp(app).mount('#app')       

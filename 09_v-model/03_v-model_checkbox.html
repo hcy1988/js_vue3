@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <script src="../vue.js"></script>
+        <title>Title</title>
+    </head>
+    <body>
+        <div id="app"> </div>
+            <template id="my-app">
+                <!-- checkbox -->
+                <span>Hobbies:</span>
+                <br>
+                <label for="reading">
+                    <input id="reading" type="checkbox" v-model="hobbies" value="reading"> 読書
+                </label>
+                <label for="gaming">
+                    <input id="gaming" type="checkbox" v-model="hobbies" value="gaming"> ゲーム
+                </label>
+                <label for="running">
+                    <input id="running" type="checkbox" v-model="hobbies" value="running"> 散歩
+                </label>
+                <label for="eating">
+                    <input id="eating" type="checkbox" v-model="hobbies" value="eating"> 美食
+                </label>
+                <h2>{{hobbies}}</h2>
+                <div>sex:</div>
+                <label for="male">
+                    <input id="male" type="radio" v-model="sex" value="male">男性
+                </label>
+                <label for="female">
+                    <input id="female" type="radio" v-model="sex" value="female">女性
+                </label>
+                <h2>{{sex}}</h2>
+                <select v-model="workday" multiple>
+                    <option value="monday">月曜日</option>
+                    <option value="tuesday">火曜日</option>
+                    <option value="wednesday">水曜日</option>
+                    <option value="thursday">木曜日</option>
+                    <option value="friday">金曜日</option>
+                </select>
+                <h2>workday:{{workday}}</h2>
+            </template>
+        <script>
+            const app={
+                template:'#my-app',
+                data(){
+                    return {
+                        message:'Hello hcy',
+                        hobbies:[],
+                        sex:'',
+                        workday:''
+                    }
+                },
+                methods:{
+
+                }
+            }     
+            Vue.createApp(app).mount('#app')       
+        </script>
+    </body>
+</html>
